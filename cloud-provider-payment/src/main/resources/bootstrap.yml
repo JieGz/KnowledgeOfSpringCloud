@@ -18,12 +18,10 @@ spring:
         #多个 Data Id 同时配置时，他的优先级关系是 spring.cloud.nacos.config.extension-configs[n].data-id 其中 n 的值越大，优先级越高(如果是用横杆来配置,越后面的,优先级越高,和n越大是同一个道理)
         #spring.cloud.nacos.config.extension-configs[n].data-id 的值必须带文件扩展名，文件扩展名既可支持 properties，又可以支持 yaml/yml。 此时 spring.cloud.nacos.config.file-extension 的配置对自定义扩展配置的 Data Id 文件扩展名没有影响。
         #1、Data Id 在默认的组 DEFAULT_GROUP,不支持配置的动态刷新
-        extension-configs:
+        shared-configs:
           - data-id: company_info.yml
-          # 2、Data Id 不在默认的组，不支持动态刷新
           - data-id: company_member.yml
             group: GLOBAL_GROUP
-          # 3、Data Id 既不在默认的组，也支持动态刷新
           - data-id: company_money.yml
             group: REFRESH_GROUP
             refresh: true
