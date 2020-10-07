@@ -6,8 +6,7 @@ spring:
     name: knowledge-of-spring-cloud
   cloud:
     nacos:
-      server-addr: localhost:8848
+      server-addr: http://nacos.itnaodong.com
       config:
-        namespace: NAME_SPACE_DEV
         group: DEV_GROUP
         file-extension: yml
