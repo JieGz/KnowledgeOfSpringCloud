@@ -8,5 +8,6 @@ spring:
     nacos:
       server-addr: http://nacos.itnaodong.com
       config:
+        namespace: DEV_NACE_SPACE
         group: DEV_GROUP
         file-extension: yml
