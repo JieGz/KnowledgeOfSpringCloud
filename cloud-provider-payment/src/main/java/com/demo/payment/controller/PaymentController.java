@@ -13,9 +13,21 @@ public class PaymentController {
     @Value(value = "${config.info}")
     private String info;
 
+    @Value(value = "${company.name}")
+    private String name;
+
+    @Value(value = "${company.date}")
+    private String date;
+
+    @Value(value = "${company.member}")
+    private String member;
+
+    @Value(value = "${company.money}")
+    private String money;
+
     @GetMapping("/v1/test")
     public String test() {
-        return "test ===>" + info;
+        return info + "---" + name + "---" + date + "---" + member + "---" + money;
     }
 }
 

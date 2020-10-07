@@ -11,3 +11,16 @@ spring:
         namespace: DEV_NACE_SPACE
         group: DEV_GROUP
         file-extension: yml
+        #自定义扩展Data-id,让一个微服务可以读取多份配置文件
+        #1、Data Id 在默认的组 DEFAULT_GROUP,不支持配置的动态刷新
+        extension-configs[0]:
+          data-id: company_info.yml
+        # 2、Data Id 不在默认的组，不支持动态刷新
+        extension-configs[1]:
+          data-id: company_member.yml
+          group: GLOBAL_GROUP
+        # 3、Data Id 既不在默认的组，也支持动态刷新
+        extension-configs[2]:
+          data-id: company_money.yml
+          group: REFRESH_GROUP
+          refresh: true
