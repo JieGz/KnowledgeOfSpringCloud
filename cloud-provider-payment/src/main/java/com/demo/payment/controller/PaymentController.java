@@ -5,6 +5,8 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.TimeUnit;
+
 
 @RefreshScope
 @RestController
@@ -30,6 +32,16 @@ public class PaymentController {
 
     @GetMapping("/v1/test")
     public String test() {
+        return info + "---" + name + "---" + date + "---" + member + "---" + money+ "---" + port;
+    }
+
+    @GetMapping("/v1/test/timeout")
+    public String testTimeOut() {
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return info + "---" + name + "---" + date + "---" + member + "---" + money+ "---" + port;
     }
 }

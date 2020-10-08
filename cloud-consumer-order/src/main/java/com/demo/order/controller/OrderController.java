@@ -24,4 +24,9 @@ public class OrderController {
     public String buy() {
         return paymentService.paymentTest() + "<===>" + serverInfo;
     }
+
+    @GetMapping("/v1/consumer/buy/timeout")
+    public String buyTimeOut() {
+        return paymentService.paymentTestTimeOut() + "<=Timeout=>" + serverInfo;
+    }
 }
