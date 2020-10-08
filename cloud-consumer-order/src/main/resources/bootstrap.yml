@@ -1,0 +1,16 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: cloud-consumer-order
+  cloud:
+    nacos:
+      server-addr: http://nacos.itnaodong.com
+      config:
+        namespace: DEV_NACE_SPACE
+        group: DEV_GROUP
+        file-extension: yml
+      discovery:
+        namespace: DEV_NACE_SPACE
+        group: DEV_GROUP

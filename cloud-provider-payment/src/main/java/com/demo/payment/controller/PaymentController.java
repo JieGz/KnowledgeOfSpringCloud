@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PaymentController {
 
+    @Value(value = "${server.port}")
+    private String port;
+
     @Value(value = "${config.info}")
     private String info;
 
@@ -27,7 +30,7 @@ public class PaymentController {
 
     @GetMapping("/v1/test")
     public String test() {
-        return info + "---" + name + "---" + date + "---" + member + "---" + money;
+        return info + "---" + name + "---" + date + "---" + member + "---" + money+ "---" + port;
     }
 }
 
