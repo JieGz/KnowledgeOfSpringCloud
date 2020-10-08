@@ -1,3 +1,4 @@
+#端口号和环境应该通过启动参数配置
 server:
   port: 8082
 
@@ -7,42 +8,19 @@ spring:
   cloud:
     nacos:
       server-addr: http://nacos.itnaodong.com
+      discovery:
+        namespace: DEV_NACE_SPACE
+        group: DEV_GROUP
       config:
         namespace: DEV_NACE_SPACE
         group: DEV_GROUP
         file-extension: yml
-      discovery:
-        namespace: DEV_NACE_SPACE
-        group: DEV_GROUP
+        extension-configs:
+          - data-id: feign-config.yml
+            group: DEV_GROUP
+            refresh: true
+          - data-id: logging-level.yml
+            group: DEV_GROUP
+            refresh: true
 
-feign:
-  client:
-    config:
-      # important: 设置默认级别的feign client 配置
-      default:
-        #设置连接超时
-        connect-timeout: 8000
-        #设置读超时
-        read-timeout: 1000
-        logger-level: full
-  httpclient:
-    enabled: true
-  #feign请求或响应GZIP压缩
-  compression:
-    #请求
-    request:
-      #是否开启GZIP压缩
-      enabled: true
-      #压缩媒体类型
-      mime-types: text/xml,application/xml,application/json
-      #最小请求阈值长度,如何请求的阈值大于2048就压缩
-      min-request-size: 2048
-    #响应
-    response:
-      #是否开启GZIP压缩
-      enabled: true
 
-logging:
-  level:
-    #feign日志以什么级别,控制那个接口
-    com.demo.order.service.feigns.PaymentService: DEBUG
