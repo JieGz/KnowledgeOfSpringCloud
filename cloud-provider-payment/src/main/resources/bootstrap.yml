@@ -45,6 +45,9 @@ spring:
       discovery:
         namespace: DEV_NACE_SPACE
         group: DEV_GROUP
-
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: http://localhost:8830
 
 
