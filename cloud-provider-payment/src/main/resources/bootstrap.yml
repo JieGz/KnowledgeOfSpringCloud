@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: knowledge-of-spring-cloud
+    name: cloud-provider-payment
   cloud:
     nacos:
       server-addr: http://nacos.itnaodong.com

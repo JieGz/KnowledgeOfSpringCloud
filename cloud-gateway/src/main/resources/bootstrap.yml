@@ -1,0 +1,26 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      server-addr: http://nacos.itnaodong.com
+      discovery:
+        namespace: DEV_NACE_SPACE
+        group: DEV_GROUP
+    gateway:
+      discovery:
+        locator:
+          enabled: true #开启从注册中心动态创建路由的功能,利用服务名进行路由
+      routes:
+        - id: order-service
+          #uri: http://localhost:8082
+          uri: lb://cloud-consumer-order #匹配后提供路由的地址
+          predicates:
+            - Path=/v1/consumer/**
+            #ZonedDateTime.now()获取时间
+            #- Between=2020-10-10T15:50:43.021+08:00[Asia/Shanghai], 2020-10-10T15:51:43.021+08:00[Asia/Shanghai]
+            - Host=localhost:9527
+      

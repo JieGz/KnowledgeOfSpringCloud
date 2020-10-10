@@ -17,6 +17,9 @@ public class OrderService {
     @Value(value = "${server.info}")
     private String serverInfo;
 
+    @Value("${server.port}")
+    private String serverPort;
+
     private PaymentService paymentService;
 
     @Autowired
@@ -31,7 +34,7 @@ public class OrderService {
     //blockHandler管理配置异常
     @SentinelResource(value = "buy", blockHandler = "buyBlockHandler")
     public String buy() {
-        return paymentService.paymentTest();
+        return paymentService.paymentTest() + ">>>>" + serverInfo + ">>> order server port:" + serverPort;
     }
 
     public String buyBlockHandler(BlockException exception) {
@@ -47,10 +50,10 @@ public class OrderService {
             blockHandlerClass = GlobalBlockHandler.class,
             blockHandler = "globalHandlerBlockException2")
     public String bestBuy() {
-        return paymentService.paymentTest();
+        return paymentService.paymentTest() + ">>>>>" + serverInfo + ">>> order server port:" + serverPort;
     }
 
     public String buyTimeOut() {
-        return paymentService.paymentTestTimeOut() + ">>>>>" + serverInfo;
+        return paymentService.paymentTestTimeOut() + ">>>>>" + serverInfo + ">>> order server port:" + serverPort;
     }
 }

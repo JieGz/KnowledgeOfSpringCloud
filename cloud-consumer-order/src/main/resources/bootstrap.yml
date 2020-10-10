@@ -1,6 +1,6 @@
 #端口号和环境应该通过启动参数配置
 server:
-  port: 8082
+  port: 8101
 
 spring:
   application:
