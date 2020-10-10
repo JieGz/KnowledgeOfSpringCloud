@@ -17,6 +17,11 @@ public class OrderController {
         return orderService.buy();
     }
 
+    @GetMapping("/v1/consumer/best/buy")
+    public String bestBuy() {
+        return orderService.bestBuy();
+    }
+
     @GetMapping("/v1/consumer/buy/timeout")
     public String buyTimeOut() {
         return orderService.buyTimeOut();
