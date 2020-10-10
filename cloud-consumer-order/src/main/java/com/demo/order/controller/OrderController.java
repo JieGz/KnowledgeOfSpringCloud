@@ -1,32 +1,24 @@
 package com.demo.order.controller;
 
-import com.demo.order.service.feigns.PaymentService;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
+import com.demo.order.service.OrderService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
-@Slf4j
-@RefreshScope
 @RestController
 public class OrderController {
 
-    @Value(value = "${server.info}")
-    private String serverInfo;
-
     @Resource
-    private PaymentService paymentService;
+    private OrderService orderService;
 
     @GetMapping("/v1/consumer/buy")
     public String buy() {
-        return paymentService.paymentTest() + "<===>" + serverInfo;
+        return orderService.buy();
     }
 
     @GetMapping("/v1/consumer/buy/timeout")
     public String buyTimeOut() {
-        return paymentService.paymentTestTimeOut() + "<=Timeout=>" + serverInfo;
+        return orderService.buyTimeOut();
     }
 }
