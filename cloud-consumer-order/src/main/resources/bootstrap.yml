@@ -22,5 +22,7 @@ spring:
           - data-id: logging-level.yml
             group: DEV_GROUP
             refresh: true
-
-
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: http://localhost:8830
