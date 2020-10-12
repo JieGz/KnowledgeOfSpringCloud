@@ -11,9 +11,10 @@ spring:
         namespace: DEV_NACE_SPACE
         group: DEV_GROUP
     gateway:
+      enabled: true #是否开启服务网关
       discovery:
         locator:
-          enabled: true #开启从注册中心动态创建路由的功能,利用服务名进行路由
+          enabled: false #是否开启通过微服务名访问服务的功能,最好不开启,这样可以屏蔽后面的微服务名
       routes:
         - id: order-service
           #uri: http://localhost:8082
@@ -23,4 +24,3 @@ spring:
             #ZonedDateTime.now()获取时间
             #- Between=2020-10-10T15:50:43.021+08:00[Asia/Shanghai], 2020-10-10T15:51:43.021+08:00[Asia/Shanghai]
             - Host=localhost:9527
-      
