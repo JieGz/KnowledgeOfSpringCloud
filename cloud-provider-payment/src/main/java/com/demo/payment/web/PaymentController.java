@@ -1,4 +1,4 @@
-package com.demo.payment.controller;
+package com.demo.payment.web;
 
 import com.demo.payment.service.PayService;
 import org.springframework.web.bind.annotation.GetMapping;

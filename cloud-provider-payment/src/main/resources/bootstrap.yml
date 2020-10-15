@@ -49,5 +49,16 @@ spring:
       transport:
         port: 8719
         dashboard: http://localhost:8830
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mysql.itnaodong.com:3306/Payment?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&useSSL=true
+    username: root
+    password: pioneerbnxd8888..*..
 
-
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.demo.payment.entites
+  configuration:
+    #是否开启驼峰命名自动映射，即从经典数据库列名 A_COLUMN 映射到经典 Java 属性名 aColumn。
+    map-underscore-to-camel-case: true
