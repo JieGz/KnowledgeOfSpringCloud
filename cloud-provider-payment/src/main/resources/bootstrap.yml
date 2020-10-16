@@ -62,3 +62,7 @@ mybatis:
   configuration:
     #是否开启驼峰命名自动映射，即从经典数据库列名 A_COLUMN 映射到经典 Java 属性名 aColumn。
     map-underscore-to-camel-case: true
+#开启SQL语句
+logging:
+  level:
+    com.demo.payment.mapper: DEBUG
