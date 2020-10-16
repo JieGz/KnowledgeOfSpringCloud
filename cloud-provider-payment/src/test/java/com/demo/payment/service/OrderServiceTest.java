@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,5 +51,19 @@ public class OrderServiceTest {
         map.put("orderUser", "Luke1");
 
         System.out.println(orderMapper.updateOrder(map));
+    }
+
+    @Test
+    public void getOrderForeach() {
+        Map<String, Object> map = new HashMap<>();
+        ArrayList<Integer> ids = new ArrayList<>();
+
+        ids.add(1);
+        ids.add(2);
+        ids.add(3);
+
+        map.put("ids", ids);
+
+        System.out.println(orderMapper.getOrderForeach(map));
     }
 }

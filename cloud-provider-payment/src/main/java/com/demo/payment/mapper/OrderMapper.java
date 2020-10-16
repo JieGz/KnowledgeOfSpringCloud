@@ -16,4 +16,7 @@ public interface OrderMapper {
 
     //更新订单
     int updateOrder(Map<String, Object> map);
+
+    //用于foreach标签
+    List<Order> getOrderForeach(Map<String,Object> map);
 }
