@@ -5,12 +5,30 @@
 
 <mapper namespace="com.demo.payment.mapper.OrderMapper">
 
-    <select id="getOrderById" resultType="Order">
+    <select id="getOrderById" parameterType="Long" resultType="order">
         SELECT * FROM t_order
         <where>
             <if test="orderId != null">
                 AND order_id = #{orderId}
             </if>
+        </where>
+    </select>
+
+
+    <select id="getOrder" parameterType="map" resultType="order">
+        SELECT * FROM t_order
+        <where>
+            <choose>
+                <when test=" orderName != null">
+                    AND order_name = #{orderName}
+                </when>
+                <when test=" orderUser != null">
+                    AND order_user = #{orderUser}
+                </when>
+                <otherwise>
+                    AND order_id = 1
+                </otherwise>
+            </choose>
         </where>
     </select>
 

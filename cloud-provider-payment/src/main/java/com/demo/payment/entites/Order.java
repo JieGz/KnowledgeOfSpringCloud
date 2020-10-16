@@ -9,4 +9,6 @@ import java.io.Serializable;
 public class Order implements Serializable {
     private Long orderId;
     private int orderState;
+    private String orderName;
+    private String orderUser;
 }
