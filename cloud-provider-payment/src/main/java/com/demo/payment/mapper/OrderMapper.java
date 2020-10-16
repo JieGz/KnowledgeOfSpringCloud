@@ -13,4 +13,7 @@ public interface OrderMapper {
     Order getOrderById(@Param("orderId") Long id);
 
     List<Order> getOrder(Map<String, Object> map);
+
+    //更新订单
+    int updateOrder(Map<String, Object> map);
 }

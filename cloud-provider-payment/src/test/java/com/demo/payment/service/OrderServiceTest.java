@@ -39,4 +39,16 @@ public class OrderServiceTest {
 
         System.out.println(orderMapper.getOrder(map));
     }
+
+    @Test
+    public void testUpdate() {
+        Map<String, Object> map = new HashMap<>();
+
+        map.put("orderId", 1);
+        map.put("orderState", 2);
+        map.put("orderName", "买牙膏1");
+        map.put("orderUser", "Luke1");
+
+        System.out.println(orderMapper.updateOrder(map));
+    }
 }
