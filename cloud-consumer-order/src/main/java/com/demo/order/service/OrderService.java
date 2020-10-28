@@ -2,13 +2,18 @@ package com.demo.order.service;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
+import com.demo.order.entities.Order;
 import com.demo.order.handler.GlobalBlockHandler;
 import com.demo.order.handler.GlobalFallbackHandler;
+import com.demo.order.mapper.OrderMapper;
 import com.demo.order.service.feigns.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.Resource;
 
 @Service
 @RefreshScope
@@ -55,5 +60,20 @@ public class OrderService {
 
     public String buyTimeOut() {
         return paymentService.paymentTestTimeOut() + ">>>>>" + serverInfo + ">>> order server port:" + serverPort;
+    }
+
+    /**********************************************Business**************************************************************/
+
+    @Resource
+    private OrderMapper orderMapper;
+
+    public int create(Order order) {
+        System.out.println(order.getOrderId());
+        return orderMapper.createOrder(order);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public int updateOrderState(String orderId, int orderSates) {
+        return orderMapper.updateOrderByOrderId(orderId, orderSates);
     }
 }

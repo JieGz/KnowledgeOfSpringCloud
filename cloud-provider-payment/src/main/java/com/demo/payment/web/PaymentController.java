@@ -4,9 +4,11 @@ import com.demo.payment.service.PayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.concurrent.TimeUnit;
 
 
@@ -35,6 +37,12 @@ public class PaymentController {
             e.printStackTrace();
         }
         return payService.getInfo();
+    }
+
+    @GetMapping("/v1/test/pay")
+    public String pay(@RequestParam("userId") int userId, @RequestParam("orderId") String orderId, @RequestParam("orderMoney") BigDecimal orderMoney) {
+        final int pay = payService.pay(userId, orderId, orderMoney);
+        return "pay result:" + pay;
     }
 }
 
