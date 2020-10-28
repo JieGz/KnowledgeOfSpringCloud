@@ -6,10 +6,10 @@ spring:
     name: cloud-provider-payment
   cloud:
     nacos:
-      server-addr: http://nacos.itnaodong.com
+      server-addr: http://192.168.56.103:8848
       config:
-        namespace: DEV_NACE_SPACE
-        group: DEV_GROUP
+        namespace: DEV_NAME_SPACE
+        group: DEFAULT_GROUP
         file-extension: yml
         #通过自定义扩展的 Data Id 配置，既可以解决多个应用间配置共享的问题，又可以支持一个应用有多个配置文件。
         #通过 spring.cloud.nacos.config.extension-configs[n].data-id 的配置方式来支持多个 Data Id 的配置。
@@ -37,43 +37,17 @@ spring:
           - data-id: company_money.yml
             group: REFRESH_GROUP
             refresh: true
+          - data-id: feign-config.yml
+            group: DEV_GROUP
+            refresh: true
+          - data-id: logging-level.yml
+            group: DEV_GROUP
+            refresh: true
       #Spring Cloud Alibaba Nacos Config 目前提供了三种配置能力从 Nacos 拉取相关的配置。
       #A: 通过 spring.cloud.nacos.config.shared-configs[n].data-id 支持多个共享 Data Id 的配置
       #B: 通过 spring.cloud.nacos.config.extension-configs[n].data-id 的方式支持多个扩展 Data Id 的配置
       #C: 通过内部相关规则(应用名、应用名+ Profile )自动生成相关的 Data Id 配置
       # 当三种方式共同使用时，他们的一个优先级关系是: C > B > A
       discovery:
-        namespace: DEV_NACE_SPACE
+        namespace: DEV_NAME_SPACE
         group: DEV_GROUP
-    sentinel:
-      transport:
-        port: 8719
-        dashboard: http://localhost:8830
-  datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://mysql.itnaodong.com:3306/Payment?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&useSSL=true
-    username: root
-    password: pioneerbnxd8888..*..
-  redis:
-    host: 192.168.56.100
-    port: 6379
-    lettuce:
-      pool:
-        min-idle: 2
-        max-active: 8
-        max-idle: 8
-        max-wait: -1
-
-
-
-mybatis:
-  mapper-locations: classpath:mapper/*Mapper.xml
-  type-aliases-package: com.demo.payment.entites
-  configuration:
-    #是否开启驼峰命名自动映射，即从经典数据库列名 A_COLUMN 映射到经典 Java 属性名 aColumn。
-    map-underscore-to-camel-case: true
-#开启SQL语句
-logging:
-  level:
-    com.demo.payment.mapper: DEBUG
