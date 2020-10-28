@@ -3,6 +3,7 @@ package com.demo.payment.service;
 import com.demo.payment.entites.User;
 import com.demo.payment.mapper.UserMapper;
 import com.demo.payment.service.feigns.OrderService;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -49,6 +50,7 @@ public class PayService {
         this.orderService = orderService;
     }
 
+    @GlobalTransactional
     public int pay(int userId, String orderId, BigDecimal orderMoney) {
         final User user = userMapper.getUserById(userId);
         if (user.getMoney().compareTo(orderMoney) < 0) {
@@ -57,6 +59,8 @@ public class PayService {
         //修改用户的余额
         user.setMoney(user.getMoney().subtract(orderMoney));
         userMapper.updateUser(user);
+
+
         //修改订单状态
         final int state = orderService.updateOrderState(orderId, 1);
 

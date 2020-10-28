@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -72,7 +71,6 @@ public class OrderService {
         return orderMapper.createOrder(order);
     }
 
-    @Transactional(rollbackFor = Exception.class)
     public int updateOrderState(String orderId, int orderSates) {
         return orderMapper.updateOrderByOrderId(orderId, orderSates);
     }
