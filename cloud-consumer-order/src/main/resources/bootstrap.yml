@@ -9,10 +9,10 @@ spring:
     nacos:
       server-addr: http://nacos.itnaodong.com
       discovery:
-        namespace: DEV_NACE_SPACE
+        namespace: DEV_NAME_SPACE
         group: DEV_GROUP
       config:
-        namespace: DEV_NACE_SPACE
+        namespace: DEV_NAME_SPACE
         group: DEV_GROUP
         file-extension: yml
         extension-configs:
