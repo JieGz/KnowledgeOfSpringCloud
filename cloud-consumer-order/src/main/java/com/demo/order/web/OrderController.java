@@ -1,7 +1,9 @@
 package com.demo.order.web;
 
+import com.demo.ISayHelloService;
 import com.demo.order.entities.Order;
 import com.demo.order.service.OrderService;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -50,4 +52,15 @@ public class OrderController {
     public int updateOrderState(@RequestParam("orderId") String orderId, @RequestParam("orderState") int orderState) {
         return orderService.updateOrderState(orderId, orderState);
     }
+
+    /**************************************************Dubbo*********************************************************/
+    @DubboReference
+    private ISayHelloService sayHelloService;
+
+    @GetMapping("/v1/consumer/dubbo/test")
+    public String sayHello() {
+        System.out.println(sayHelloService.sayHello("Luke 2020.10.28"));
+        return sayHelloService.sayHello("Luke 2020.10.28");
+    }
+
 }

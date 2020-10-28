@@ -51,3 +51,12 @@ spring:
       discovery:
         namespace: DEV_NAME_SPACE
         group: DEV_GROUP
+dubbo:
+  registry:
+    address: nacos://192.168.56.103:8848
+  protocol:
+    name: dubbo
+    accesslog: true
+  application:
+    name: spring-cloud-dubbo-provider
+    logger: slf4j

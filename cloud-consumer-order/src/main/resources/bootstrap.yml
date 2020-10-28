@@ -22,3 +22,8 @@ spring:
           - data-id: logging-level.yml
             group: DEV_GROUP
             refresh: true
+dubbo:
+  registry:
+    address: nacos://192.168.56.103:8848
+  application:
+    name: springboot-dubbo-consumer
