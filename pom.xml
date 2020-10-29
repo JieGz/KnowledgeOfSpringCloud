@@ -90,13 +90,13 @@
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>${mybatis.version}</version>
             </dependency>
-
+            <!-- dubbo注册到nacos上的依赖包 -->
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo-registry-nacos</artifactId>
                 <version>${dubbo.version}</version>
             </dependency>
-
+            <!-- dubbo整合spring boot -->
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo-spring-boot-starter</artifactId>
