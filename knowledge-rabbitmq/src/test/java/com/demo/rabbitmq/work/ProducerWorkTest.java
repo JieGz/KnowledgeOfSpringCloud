@@ -1,4 +1,4 @@
-package com.demo.rabbitmq;
+package com.demo.rabbitmq.work;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeoutException;
 
-public class ProviderTest {
+public class ProducerWorkTest {
 
     private String queue = "mq-test";
 
@@ -42,7 +42,7 @@ public class ProviderTest {
             //参数1：队列的名称，如果队列不存在，会自动创建
             //参数2：用来定义队列的特性是否要持久化
             //参数3：表示是否不独占队列
-            //参数4：表示消息费消息消息后是否自动删除
+            //参数4：表示消息费消费消息后是否自动删除队列
             //参数5：额外附加的参数¬
             channel.queueDeclare(queue, false, false, false, null);
 
