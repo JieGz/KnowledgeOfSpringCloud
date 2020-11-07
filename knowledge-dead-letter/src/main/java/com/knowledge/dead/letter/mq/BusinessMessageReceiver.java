@@ -32,7 +32,9 @@ public class BusinessMessageReceiver {
         }
         if (!ack) {
             log.error("消息消费发生异常，error msg:{}", exception.getMessage(), exception);
-            channel.basicNack(message.getMessageProperties().getDeliveryTag(), false, false);
+            //两种让消息进入死信队列的方法
+            //channel.basicNack(message.getMessageProperties().getDeliveryTag(), false, false);
+            //channel.basicReject(message.getMessageProperties().getDeliveryTag(), false);
         } else {
             channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
         }
