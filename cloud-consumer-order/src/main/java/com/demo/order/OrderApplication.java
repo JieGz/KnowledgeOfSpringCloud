@@ -1,5 +1,6 @@
 package com.demo.order;
 
+import com.qiyue.mq.task.annotation.EnableElasticJob;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,6 +10,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients
+@EnableElasticJob
 @MapperScan("com.demo.order.mapper")
 public class OrderApplication {
 
