@@ -16,6 +16,7 @@
         <module>QiYue-mq-parent</module>
         <module>knowledge-elastic-job</module>
         <module>knowledge-dead-letter</module>
+        <module>knowledge-rabbitmq-delay</module>
     </modules>
 
     <name>KnowledgeOfSpringCloud</name>

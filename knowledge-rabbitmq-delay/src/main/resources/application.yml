@@ -1,0 +1,11 @@
+spring:
+  rabbitmq:
+    addresses: 192.168.56.100:5672
+    username: luke
+    password: luke
+    virtual-host: test
+    listener:
+      type: simple
+      simple:
+        default-requeue-rejected: false
+        acknowledge-mode: manual
