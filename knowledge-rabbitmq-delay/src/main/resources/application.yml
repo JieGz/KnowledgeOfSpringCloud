@@ -9,3 +9,6 @@ spring:
       simple:
         default-requeue-rejected: false
         acknowledge-mode: manual
+        prefetch: 2
+        concurrency: 1
+        max-concurrency: 5
