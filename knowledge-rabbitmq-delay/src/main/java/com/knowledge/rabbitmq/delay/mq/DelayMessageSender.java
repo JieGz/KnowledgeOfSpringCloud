@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 
+import static com.knowledge.rabbitmq.delay.config.DelayedRabbitMQConfig.DELAYED_EXCHANGE_NAME;
+import static com.knowledge.rabbitmq.delay.config.DelayedRabbitMQConfig.DELAYED_ROUTING_KEY;
 import static com.knowledge.rabbitmq.delay.config.RabbitMQConfig.*;
 
 @Component
@@ -34,10 +36,10 @@ public class DelayMessageSender {
         });
     }
 
-    // public void sendDelayMsg(String msg, Integer delayTime) {
-    //     rabbitTemplate.convertAndSend(DELAYED_EXCHANGE_NAME, DELAYED_ROUTING_KEY, msg, a -> {
-    //         a.getMessageProperties().setDelay(delayTime);
-    //         return a;
-    //     });
-    // }
+    public void sendDelayMsg(String msg, Integer delayTime) {
+        rabbitTemplate.convertAndSend(DELAYED_EXCHANGE_NAME, DELAYED_ROUTING_KEY, msg, a -> {
+            a.getMessageProperties().setDelay(delayTime);
+            return a;
+        });
+    }
 }

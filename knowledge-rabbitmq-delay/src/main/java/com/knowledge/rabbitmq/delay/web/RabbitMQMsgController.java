@@ -33,6 +33,6 @@ public class RabbitMQMsgController {
     @RequestMapping("delayMsg2")
     public void delayMsg2(String msg, Integer delayTime) {
         log.info("当前时间：{},收到请求，msg:{},delayTime:{}", LocalDateTime.now(), msg, delayTime);
-//        sender.sendDelayMsg(msg, delayTime);
+        sender.sendDelayMsg(msg, delayTime);
     }
 }
