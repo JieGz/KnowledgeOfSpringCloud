@@ -9,8 +9,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
-import static com.knowledge.rabbitmq.delay.config.RabbitMQConfig.DEAD_LETTER_QUEUEA_NAME;
-import static com.knowledge.rabbitmq.delay.config.RabbitMQConfig.DEAD_LETTER_QUEUEB_NAME;
+import static com.knowledge.rabbitmq.delay.config.RabbitMQConfig.*;
 
 @Slf4j
 @Component
@@ -29,6 +28,13 @@ public class DeadLetterQueueConsumer {
     public void receiveB(Message message, Channel channel) throws IOException {
         String msg = new String(message.getBody());
         log.info("当前时间：{},死信队列B收到消息：{}", LocalDateTime.now(), msg);
+        channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
+    }
+
+    @RabbitListener(queues = DEAD_LETTER_QUEUEC_NAME)
+    public void receiveC(Message message, Channel channel)throws IOException  {
+        String msg = new String(message.getBody());
+        log.info("当前时间：{},死信队列C收到消息：{}", LocalDateTime.now(), msg);
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
     }
 }

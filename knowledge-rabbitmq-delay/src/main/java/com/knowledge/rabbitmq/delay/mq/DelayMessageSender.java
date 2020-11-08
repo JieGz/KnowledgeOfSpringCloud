@@ -24,4 +24,20 @@ public class DelayMessageSender {
                 break;
         }
     }
+
+
+    public void sendMsg(String msg, Integer delayTime) {
+        rabbitTemplate.convertAndSend(DELAY_EXCHANGEC_NAME, DELAY_QUEUEC_ROUTING_KEY, msg, a -> {
+            //给消息设置过期时间
+            a.getMessageProperties().setExpiration(String.valueOf(delayTime));
+            return a;
+        });
+    }
+
+    // public void sendDelayMsg(String msg, Integer delayTime) {
+    //     rabbitTemplate.convertAndSend(DELAYED_EXCHANGE_NAME, DELAYED_ROUTING_KEY, msg, a -> {
+    //         a.getMessageProperties().setDelay(delayTime);
+    //         return a;
+    //     });
+    // }
 }
