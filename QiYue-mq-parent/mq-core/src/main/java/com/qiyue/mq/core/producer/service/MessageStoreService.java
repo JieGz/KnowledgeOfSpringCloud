@@ -26,6 +26,7 @@ public class MessageStoreService {
         return brokerMessageMapper.insert(record);
     }
 
+    //todo 这里的消息状态抽成一个枚举类表示可能会更好,不应该使用字符串
     public void succeed(String messageId) {
         brokerMessageMapper.changeBrokerMessageStatus(messageId, "1", LocalDateTime.now());
     }
