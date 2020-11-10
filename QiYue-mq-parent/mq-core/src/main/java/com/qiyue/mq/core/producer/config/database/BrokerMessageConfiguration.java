@@ -1,7 +1,5 @@
 package com.qiyue.mq.core.producer.config.database;
 
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -11,23 +9,25 @@ import org.springframework.jdbc.datasource.init.DataSourceInitializer;
 import org.springframework.jdbc.datasource.init.DatabasePopulator;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 
+import javax.sql.DataSource;
+
 /**
- * 	$BrokerMessageConfiguration 
- * 	帮我执行SQL脚本
- * 	帮我进行数据库表结构的创建
+ * $BrokerMessageConfiguration
+ * 帮我执行SQL脚本
+ * 帮我进行数据库表结构的创建
  */
 @Configuration
 public class BrokerMessageConfiguration {
 
     @Autowired
     private DataSource rabbitProducerDataSource;
-    
+
     @Value("classpath:rabbit-producer-message-schema.sql")
     private Resource schemaScript;
-    
+
     @Bean
     public DataSourceInitializer initDataSourceInitializer() {
-    	System.err.println("--------------rabbitProducerDataSource-----------:" + rabbitProducerDataSource);
+        System.err.println("--------------rabbitProducerDataSource-----------:" + rabbitProducerDataSource);
         final DataSourceInitializer initializer = new DataSourceInitializer();
         initializer.setDataSource(rabbitProducerDataSource);
         initializer.setDatabasePopulator(databasePopulator());
