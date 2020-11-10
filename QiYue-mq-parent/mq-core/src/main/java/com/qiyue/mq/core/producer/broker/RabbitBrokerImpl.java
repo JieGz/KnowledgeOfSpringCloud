@@ -1,5 +1,6 @@
 package com.qiyue.mq.core.producer.broker;
 
+import com.qiyue.mq.common.type.BrokerMessageEnum;
 import com.qiyue.mq.core.producer.entities.BrokerMessage;
 import com.qiyue.mq.core.producer.service.MessageStoreService;
 import com.qiyue.mq.rabbit.api.Message;
@@ -54,7 +55,7 @@ public class RabbitBrokerImpl implements RabbitBroker {
             brokerMessage.setUpdateTime(LocalDateTime.now());
             brokerMessage.setNextRetry(LocalDateTime.now().plusMinutes(5L));
             brokerMessage.setTryCount(0);
-            brokerMessage.setStatus("0");
+            brokerMessage.setStatus(BrokerMessageEnum.INIT.type());
             messageStoreService.insert(brokerMessage);
         }
         //2.向mq中发送消息

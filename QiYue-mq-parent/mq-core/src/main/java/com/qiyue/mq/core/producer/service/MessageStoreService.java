@@ -1,5 +1,6 @@
 package com.qiyue.mq.core.producer.service;
 
+import com.qiyue.mq.common.type.BrokerMessageEnum;
 import com.qiyue.mq.core.producer.entities.BrokerMessage;
 import com.qiyue.mq.core.producer.mapper.BrokerMessageMapper;
 import org.springframework.stereotype.Service;
@@ -25,17 +26,16 @@ public class MessageStoreService {
         return brokerMessageMapper.insert(record);
     }
 
-    //todo 这里的消息状态抽成一个枚举类表示可能会更好,不应该使用字符串
     public void succeed(String messageId) {
-        brokerMessageMapper.changeBrokerMessageStatus(messageId, "1", LocalDateTime.now());
+        brokerMessageMapper.changeBrokerMessageStatus(messageId, BrokerMessageEnum.SUCCEED.type(), LocalDateTime.now());
     }
 
     public void failure(String messageId) {
-        brokerMessageMapper.changeBrokerMessageStatus(messageId, "2", LocalDateTime.now());
+        brokerMessageMapper.changeBrokerMessageStatus(messageId, BrokerMessageEnum.Failure.type(), LocalDateTime.now());
     }
 
     public void sendAfterMinutes(String messageId) {
-        brokerMessageMapper.changeBrokerMessageStatus(messageId, "3", LocalDateTime.now());
+        brokerMessageMapper.changeBrokerMessageStatus(messageId, BrokerMessageEnum.AFTER_MINUTER.type(), LocalDateTime.now());
     }
 
     public BrokerMessage selectByMessageId(String messageId) {
