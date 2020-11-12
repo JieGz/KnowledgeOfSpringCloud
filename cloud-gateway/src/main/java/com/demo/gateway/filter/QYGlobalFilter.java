@@ -11,6 +11,9 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+/**
+ * 全局过滤器
+ */
 @Slf4j
 @Component
 public class QYGlobalFilter implements GlobalFilter, Ordered {
