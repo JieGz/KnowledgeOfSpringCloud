@@ -11,26 +11,26 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Slf4j
-@RequestMapping("rabbitmq")
+@RequestMapping("/rabbitmq")
 @RestController
 public class RabbitMQMsgController {
 
     @Resource
     private DelayMessageSender sender;
 
-    @RequestMapping("sendmsg")
+    @RequestMapping("/sendmsg")
     public void sendMsg(String msg, Integer delayType) {
         log.info("当前时间：{},收到请求，msg:{},delayType:{}", LocalDateTime.now(), msg, delayType);
         sender.sendMessage(msg, Objects.requireNonNull(DelayTypeEnum.getDelayTypeEnumByValue(delayType)));
     }
 
-    @RequestMapping("delayMsg")
+    @RequestMapping("/delayMsg")
     public void delayMsg(String msg, Integer delayTime) {
         log.info("当前时间：{},收到请求，msg:{},delayTime:{}", LocalDateTime.now(), msg, delayTime);
         sender.sendMsg(msg, delayTime);
     }
 
-    @RequestMapping("delayMsg2")
+    @RequestMapping("/delayMsg2")
     public void delayMsg2(String msg, Integer delayTime) {
         log.info("当前时间：{},收到请求，msg:{},delayTime:{}", LocalDateTime.now(), msg, delayTime);
         sender.sendDelayMsg(msg, delayTime);
