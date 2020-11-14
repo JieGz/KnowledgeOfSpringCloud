@@ -15,24 +15,24 @@ import java.util.Objects;
 @RestController
 public class RabbitMQMsgController {
 
-    @Resource
-    private DelayMessageSender sender;
+	@Resource
+	private DelayMessageSender sender;
 
-    @RequestMapping("/sendmsg")
-    public void sendMsg(String msg, Integer delayType) {
-        log.info("当前时间：{},收到请求，msg:{},delayType:{}", LocalDateTime.now(), msg, delayType);
-        sender.sendMessage(msg, Objects.requireNonNull(DelayTypeEnum.getDelayTypeEnumByValue(delayType)));
-    }
+	@RequestMapping("/sendmsg")
+	public void sendMsg(String msg, Integer delayType) {
+		log.info("当前时间：{},收到请求，msg:{},delayType:{}", LocalDateTime.now(), msg, delayType);
+		sender.sendMessage(msg, Objects.requireNonNull(DelayTypeEnum.getDelayTypeEnumByValue(delayType)));
+	}
 
-    @RequestMapping("/delayMsg")
-    public void delayMsg(String msg, Integer delayTime) {
-        log.info("当前时间：{},收到请求，msg:{},delayTime:{}", LocalDateTime.now(), msg, delayTime);
-        sender.sendMsg(msg, delayTime);
-    }
+	@RequestMapping("/delayMsg")
+	public void delayMsg(String msg, Integer delayTime) {
+		log.info("当前时间：{},收到请求，msg:{},delayTime:{}", LocalDateTime.now(), msg, delayTime);
+		sender.sendMsg(msg, delayTime);
+	}
 
-    @RequestMapping("/delayMsg2")
-    public void delayMsg2(String msg, Integer delayTime) {
-        log.info("当前时间：{},收到请求，msg:{},delayTime:{}", LocalDateTime.now(), msg, delayTime);
-        sender.sendDelayMsg(msg, delayTime);
-    }
+	@RequestMapping("/delayMsg2")
+	public void delayMsg2(String msg, Integer delayTime) {
+		log.info("当前时间：{},收到请求，msg:{},delayTime:{}", LocalDateTime.now(), msg, delayTime);
+		sender.sendDelayMsg(msg, delayTime);
+	}
 }
