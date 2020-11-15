@@ -93,6 +93,7 @@
                 <scope>provided</scope>
             </dependency>
 
+            <!-- 引用druid比引用starter遇到的总是会更少 -->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid</artifactId>
