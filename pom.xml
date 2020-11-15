@@ -17,6 +17,7 @@
         <module>knowledge-elastic-job</module>
         <module>knowledge-dead-letter</module>
         <module>knowledge-rabbitmq-delay</module>
+        <module>knowledge-kubernetes</module>
     </modules>
 
     <name>KnowledgeOfSpringCloud</name>
