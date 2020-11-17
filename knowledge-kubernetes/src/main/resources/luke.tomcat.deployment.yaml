@@ -5,6 +5,7 @@ metadata:
 spec:
   selector:
     # 这里需要注意的是,需要配置spec.template.metadata.labels的键值完成配置
+    # 如果是在idea那里,注意一下左边的那个小箭头,可以点一下,会有提示的
     matchLabels:
       app: tomcat
   replicas: 3
