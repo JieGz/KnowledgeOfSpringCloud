@@ -7,5 +7,6 @@ spec:
   ports:
     - port: 8080
       nodePort: 30000
+      protocol: TCP
   selector:
-    name: tomcat-service
+    app: tomcat
