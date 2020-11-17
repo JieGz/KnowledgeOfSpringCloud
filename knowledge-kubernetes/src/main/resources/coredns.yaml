@@ -196,7 +196,7 @@ metadata:
 spec:
   selector:
     k8s-app: kube-dns
-  clusterIP: 10.0.2.9
+  # clusterIP: 10.0.2.9 这一行因为参数目前还不是非常确定,所以需要先去掉
   ports:
     - name: dns
       port: 53
