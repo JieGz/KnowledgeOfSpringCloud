@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tomcat-deployment
+spec:
+  selector:
+    # 这里需要注意的是,需要配置spec.template.metadata.labels的键值完成配置
+    matchLabels:
+      app: tomcat
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: tomcat
+    spec:
+      containers:
+        - name: tomcat-pod
+          image: tomcat:8.5-jre8
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: tomcat-port
+              containerPort: 8080
+  
