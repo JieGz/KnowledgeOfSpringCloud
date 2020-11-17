@@ -8,5 +8,6 @@ spec:
     - port: 8080
       nodePort: 30000
       protocol: TCP
+  # 细节,如果在idea编写的脚本,可以通过左边的箭头,如果便签选择器正确,是能跳转的
   selector:
     app: tomcat
