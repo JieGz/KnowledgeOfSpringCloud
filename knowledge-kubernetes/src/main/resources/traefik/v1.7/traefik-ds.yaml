@@ -27,6 +27,7 @@ spec:
       containers:
         - image: traefik:v1.7
           name: traefik-ingress-lb
+          imagePullPolicy: IfNotPresent
           ports:
             - name: http
               containerPort: 80
