@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: luke-test-pvc
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      pvc: luke-pvc-test
+  template:
+    metadata:
+      labels:
+        pvc: luke-pvc-test
+    spec:
+      containers:
+        - name: container-pvc
+          image: busybox
+          imagePullPolicy: IfNotPresent
+          command: [ 'sh','-c' ]
+          args: [ 'echo "The host is ${hostname}" >> /dir/dataforpvc; sleep 3600' ]
+          volumeMounts:
+            - mountPath: /dir
+              name: pvcdata
+      volumes:
+        - name: pvcdata
+          persistentVolumeClaim:
+            claimName: test-pvc
+            
