@@ -6,6 +6,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 // TODO: 2020/11/15 封装一个好用的网络响应的组件
 // TODO: 2020/11/15 最好能结合阿里巴巴的开发手册
+// TODO: 2020/11/29 自写一个断言,自己的时间格式 
 @SpringBootApplication
 @EnableDiscoveryClient
 public class GatewayApplication {
