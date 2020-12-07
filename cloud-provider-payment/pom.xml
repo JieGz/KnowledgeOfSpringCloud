@@ -101,8 +101,8 @@
         <!--  dubbo api -->
         <dependency>
             <groupId>com.demo</groupId>
-            <artifactId>api</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <artifactId>spring-cloud-dubbo-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
